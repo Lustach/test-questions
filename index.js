@@ -34,10 +34,10 @@ let myAnswer = {
 (function(arrOfTasks) {
   let defaultAnswer = 0;
   let doc = document;
-  console.log(arrOfTasks);
+
 
   let qContainer = document.querySelector(".test-container");
-  console.log(qContainer);
+
   let questForm = doc.querySelector(".test-quest");
 
   createOneTask(defaultAnswer);
@@ -61,18 +61,18 @@ let myAnswer = {
       radioInput.setAttribute("value", questions[param].answer[i]);
 
       radioInput.addEventListener("click", e => {
-        console.log(e.target.value);
+
         intermediateAnswer = { answer: e.target.value, quesNumber: param };
-        console.log(intermediateAnswer, param);
+
       });
       p.appendChild(radioInput);
       textContent = doc.createTextNode(questions[param].answer[i]);
       p.appendChild(textContent);
-      console.log(p);
+
 
       questForm.appendChild(p);
     }
-    console.log(defaultAnswer);
+
   }
 
   let btnSetAnswer = document.querySelector(".set-answer");
@@ -82,17 +82,14 @@ let myAnswer = {
   btnSetAnswer.addEventListener("click", () => {
     if (intermediateAnswer != null) {
       if (myAnswer.hasOwnProperty(intermediateAnswer.quesNumber)) {
-        console.log("est`");
+
       } else {
         myAnswer.length++;
       }
-      console.log(
-        intermediateAnswer.quesNumber,
-        "intermediateAnswer.quesNumber"
-      );
+
       myAnswer[intermediateAnswer.quesNumber] = intermediateAnswer;
 
-      console.log(myAnswer);
+
       plusDefaultAnswer();
       if (myAnswer.length == 5) {
         alert("Тест закончен");
@@ -107,7 +104,7 @@ let myAnswer = {
   btnBack.addEventListener("click", minusDefaulAnswer);
   btnForward.addEventListener("click", plusDefaultAnswer);
   function minusDefaulAnswer() {
-    console.log("a");
+
     if (defaultAnswer == 0) {
       defaultAnswer = questions.length - 1;
       createOneTask(defaultAnswer);
@@ -118,7 +115,7 @@ let myAnswer = {
   }
 
   function plusDefaultAnswer() {
-    console.log("b");
+
     if (defaultAnswer == questions.length - 1) {
       defaultAnswer = 0;
       createOneTask(defaultAnswer);
@@ -129,7 +126,6 @@ let myAnswer = {
   }
 
   function getResult() {
-    console.log("function getResult");
     questForm.innerHTML = "";
     let TotalrightAnswer = 0;
 
